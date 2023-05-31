@@ -1,8 +1,9 @@
-// подключаем библиотеки.
-use walkdir::WalkDir;  // для итерации по всем файлам
-use std::{io, path::PathBuf};  // для запроса данных с пользователя
+// create aliases for crates.
+use walkdir::WalkDir;
+use std::{io, path::PathBuf};
 
 fn main(){
+	// guys! I am lazy to use win api. Look at this sh*tty piece of filtered drive paths ahahahahaha!
 	let paths=('c'..='z').map(|c|{let tp_owned=format!("{}:\\", c); let tp=tp_owned.as_str(); let mut pb=PathBuf::new(); pb.push(tp); pb}).filter(|e| e.exists());
 	let stdin = io::stdin();  // stdin handler.
 	let mut search=String::new();
